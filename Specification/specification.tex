@@ -1,0 +1,54 @@
+%\section{Specs}
+\section{Problem description}\label{sec:prob_desc}
+The advent of the COVID-19 pandemic has set limits regarding crowding in public places where a minimum social distance must be maintained to prevent the spread of the infection. This event has increased the amount of time (wait) required to carry out normal daily habits, such as shopping in stores, interacting with public offices, etc.
+%L'avvento della pandemia causata dal COVID-19 ha posto dei limiti per quanto riguarda l'affollamento nei luoghi pubblici, nei quali occorre mantenere un distanziamento sociale minimo per prevenire la diffusione del contagio. Questo evento ha aumentato la quantità di tempo (attesa) necessaria per svolgere le normali abitudini giornaliere, ad esempio fare acquisti nei negozi, interagire con gli uffici pubblici, etc.
+
+Knowing in advance the amount of people in a given place could, without a doubt, helps in containing the virus and in optimizing the time lost in unnecessary waiting.
+%Conoscere in anticipo la quantità di persone in un determinato luogo potrebbe, senza dubbio, aiutare nel contenimento del virus e contribuire ad ottimizzare il tempo perso in inutili attese.
+\section{Use case(s)}
+As we mentioned in \ref{sec:prob_desc}, a possible application of our project could take place through the use of a bot, to which it is possible to ask directly the level of crowding of a particular place. The latter must be equipped with cameras positioned in strategic places, like entrances and exits. For this purpose it is also possible to use the surveillance cameras already present in the shops/offices.
+%Come abbiamo accennato in \ref{sec:prob_desc}, una possibile applicazione del nostro progetto potrebbe avvenire mediante l'utilizzo di un bot, a cui è possibile chiedere direttamente il livello di affluenza di un determinato luogo. Quest'ultimo deve essere dotato di telecamere posizionate in luoghi strategici, come lo sono le entrate e le uscite. Per tale scopo è anche possibile utilizzare le telecamere di sorveglianza già presenti nei locali.
+
+A further use case could be meeting the merchant's or public body's need to know the number of customers over a given period of time.
+
+%Un ulteriore caso d'uso potrebbe essere il soddisfacimento del bisogno del commerciante od ente pubblico del sapere il numero di clienti in un determinato periodo di tempo.
+
+\section{Requirements}
+%Andremo ad utilizzare le seguenti piattaforme hardware/software:
+We'll use the following software/hardware platforms:
+\begin{itemize}
+    \item \textbf{Hardware} side:
+    \begin{itemize}
+        \item \textbf{IP camera} with Wi-Fi module for video streaming;%con modulo Wi-Fi per il flusso video;
+        \item \textbf{computer} to run the software.%Macchina su cui far girare il software.
+    \end{itemize}
+    \item \textbf{Software} side:
+    \begin{itemize}
+        \item \textbf{telegram bot}, built on Python by using python-telegram-bot;
+        \item \textbf{software for people detection} with the use of OpenCV and for sending data towards the ThingSpeak platform;%con l'uso di OpenCV, e per l'invio di informazioni diretto alla piattaforma ThingSpeak.
+        \item \textbf{Heroku} for bot hosting;%per l'hosting del bot;
+        \item \textbf{Thingspeak} for the online data storing and visualization;%il servizio di mantenimento online e visualizzazione dei dati;
+        \item \textbf{MongoDB} for the storing of data regarding the affluence of people inside a building.%per il salvataggio dei dati riguardanti l'affluenza delle persone in un determinato locale.
+    \end{itemize}
+    %\item Bot:
+\end{itemize}
+
+\section{Solution description}
+The goal of our project is to produce a bot that, at the request of the user, indicates the number of people in a room. At this point we will use IP cameras with the Wi-Fi module in order to simulate the behavior of a real camera. When the camera is turned on, the software starts counting in real time, through the OpenCV library, the number of people who are currently inside the room.
+
+%L'obiettivo del nostro progetto è quello di produrre un bot che, su richiesta dell'utente, indichi il numero di persone all'interno di un locale. A tal punto utilizzeremo delle IP camera con il modulo Wi-Fi al fine di simulare il comportamento di una vera telecamera. All'accensione della telecamera, il software inizia a contare in tempo reale, attraverso la libreria OpenCV, il numero di persone che attualmente sono all'interno del locale.
+
+The software also, at each time slot decided on the basis of the local (arbitrarily in this project, for simplicity), saves on the database the data on the turnout that will be recoverable by the bot, which will provide this information at the user's request.
+
+%Il software inoltre, ad ogni slot temporale deciso in base al locale (arbitrariamente in questo progetto, per semplicità), salva sul database il dato sull'affluenza che sarà recuperabile dal bot, il quale fornirà tale informazione a richiesta dell'utente. 
+
+\section{Planned demo and future work}
+We will present a demonstration video of our work, in which we will show how people are detected (and how the affluence value on the cloud is updated), and then show a possible use of the bot.
+
+%Presenteremo un video dimostrativo del nostro lavoro, nel quale mostreremo come avviene il rilevamento delle persone (e come viene aggiornato il valore di affluenza sul cloud), per poi presentare un possibile utilizzo del bot.
+
+In the future we intend to expand our work through the possibility of creating a real app in which it will be possible to make a possible reservation to a shop/office.
+We are also interested in expanding our project by collecting further data for statistical purposes to better understand the flow of people in a certain area and/or at a certain time.
+
+%In futuro avevamo intenzione di espandere il nostro lavoro attraverso la possibilità di creazione di un'app vera e propria con la quale sia possibile effettuare una possibili prenotazione verso un locale.
+%Siamo inoltre interessati nell'ampliare il nostro progetto con la rilevazione di ulteriori dati a fini statistici per comprendere il flusso di persone in una determinata zona e/o in un determinato orario.

@@ -1,0 +1,43 @@
+\documentclass[12pt, letterpaper]{article}  % change to >11 pt if you like, and change article with report
+\usepackage[letterpaper, top=3.71cm, bottom=3.20cm, left=2.86cm, right=2.86cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{hyperref}
+
+\title{\vspace{-2cm}\textbf{Mobile and cyber-physical systems project specification}}
+\author{\small{\textit{Dalla Noce Niko, Ristori Alessandro}.} \\ % put your full name here
+        \small{Master Degree in Computer science.}\\ \small{{n.dallanoce@studenti.unipi.it, a.ristori5@studenti.unipi.it}.} \\  % put your Master Degree here
+        \small{Mobile and cyber-physical systems, Academic Year: 2020/2021} \\
+        \small{Date: 31/03/2021} \\
+        %\small{Type of project: \textbf{A}}
+        \small{Team 8}
+}
+
+\renewcommand\refname{} %remove this line to automatically show the bibliography header
+
+\begin{document}
+
+\nocite{*}  % comment this line to list only the articles you really cite
+\date{}
+\maketitle
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{images/unipi.png}\\
+    \vspace{0.5cm}
+\end{center}
+\begin{abstract}
+The document presents the problem we wish to address, a possible use case with the specifications necessary for the implementation of the project; there will also be a short paragraph in which we will talk about how we intend to carry out our idea.
+%Il documento presenta il problema che desideriamo affrontare, un possibile caso d'uso con le specifiche necessarie all'implementazione del progetto; sarà presente anche un breve paragrafo nel quale parleremo di come abbiamo intenzione di portare avanti la nostra idea.
+\end{abstract}
+%\include{Sections/abstract}
+\newpage
+\input{specification}
+%\input{Sections/method}
+%\input{Sections/experiments}
+%\input{Sections/conclusion}
+%\input{Sections/references}
+
+\end{document}
