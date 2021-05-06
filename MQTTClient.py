@@ -8,7 +8,7 @@ class MQTTClient:
         self.identifier = identifier
         self.client = mqtt.Client(client_id=identifier, protocol=mqtt.MQTTv5)
         self.client.on_connect = self.on_connect
-        self.client.on_message = self.on_message
+        self.client.on_message = self.on_message_sleep
         self.client.tls_set(tls_version=mqtt.ssl.PROTOCOL_TLS)
 
     def publish(self, topic: str, payload: str, qos=1):
@@ -20,6 +20,9 @@ class MQTTClient:
         self.client.subscribe(topic, qos=2)  # client.unsubscribe("my/test/topic")
         # Blocking call that processes network traffic, dispatches callbacks and handles reconnecting.
         self.client.loop_forever()
+
+    def unsubscribe(self, topic: str):
+        self.client.unsubscribe(topic)
 
     def disconnect(self):
         self.client.disconnect()
@@ -33,7 +36,16 @@ class MQTTClient:
 
     # The callback for when a PUBLISH message is received from the server.
     def on_message(self, client, userdata, msg):
-        print("Received message: " + msg.topic + " -> " + msg.payload.decode("utf-8"))
+        payload = msg.payload.decode("utf-8")
+        print("Received message: " + msg.topic + " -> " + payload)
+        self.disconnect()
+
+    # The callback for when a PUBLISH message is received from the server.
+    def on_message_sleep(self, client, userdata, msg):
+        payload = msg.payload.decode("utf-8")
+        print("Received message: " + msg.topic + " -> " + payload)
+        if "comunication/" in msg.topic:
+            time.sleep(float(payload))
         self.disconnect()
 
     def connect(self, user: str, passwd: str, conn_str: str, clean_start=False):
