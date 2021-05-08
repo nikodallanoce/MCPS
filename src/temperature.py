@@ -1,7 +1,5 @@
 import threading
 import time
-
-import adafruit_dht
 from adafruit_dht import DHT22
 import board
 
