@@ -28,25 +28,6 @@ def measure(device):
             raise error
     return ris
 
-
-def old_main():
-    # th = measure(devices[0])
-    sensor1, sensor2 = MQTTClient("sensor1"), MQTTClient("sensor2")
-    sensor1.connect("raspberry", "Pieroangela0", "37c7a072139e48e380bb5e3df6662706.s1.eu.hivemq.cloud", True)
-    sensor2.connect("raspberry2", "Raspberry2", "37c7a072139e48e380bb5e3df6662706.s1.eu.hivemq.cloud", True)
-
-    sensor1.publish("customer/Azienda1/frigo", measure(devices[0]))
-    sensor2.publish("customer/Azienda1/frigo1", measure(devices[1]))
-    sensor1.disconnect()
-    sensor2.disconnect()
-
-    sensor1, sensor2 = MQTTClient("sensor1sub"), MQTTClient("sensor2sub")
-    sensor1.connect("raspberry", "Pieroangela0", "37c7a072139e48e380bb5e3df6662706.s1.eu.hivemq.cloud", False)
-    sensor2.connect("raspberry2", "Raspberry2", "37c7a072139e48e380bb5e3df6662706.s1.eu.hivemq.cloud", False)
-    sensor1.subscribe("comunication/Azienda1/frigo")
-    sensor2.subscribe("comunication/Azienda1/frigo1")
-
-
 def send_a_sample_to_topic(client: MQTTClient, sensor, usr: str, psw: str, con_str: str, pub_topic: str,
                            sub_topic: str, sub):
     client.connect(usr, psw, con_str, False)
