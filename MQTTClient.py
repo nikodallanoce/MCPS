@@ -45,7 +45,7 @@ class MQTTClient:
         payload = msg.payload.decode("utf-8")
         print("Received message: " + msg.topic + " -> " + payload)
         if "comunication/" in msg.topic:
-            time.sleep(float(payload))
+            time.sleep(float(payload)*60)
         self.disconnect()
 
     def connect(self, user: str, passwd: str, conn_str: str, clean_start=False):

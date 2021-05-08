@@ -4,7 +4,6 @@ import time
 import adafruit_dht
 from adafruit_dht import DHT22
 import board
-from apscheduler.schedulers.blocking import BlockingScheduler
 
 from MQTTClient import MQTTClient
 
@@ -78,13 +77,12 @@ if __name__ == '__main__':
 
     th1 = threading.Thread(target=thread_start,
                            args=[[client1, devices[0], "raspberry", "Pieroangela0", conn, "customer/Azienda1/frigo",
-                                  "comunication/Azienda1/frigo", sub1], 2])
+                                  "comunication/Azienda1/frigo", sub1], 100])
     th2 = threading.Thread(target=thread_start,
                            args=[[client2, devices[1], "raspberry2", "Raspberry2", conn, "customer/Azienda1/frigo1",
-                                  "comunication/Azienda1/frigo1", sub2], 1])
+                                  "comunication/Azienda1/frigo1", sub2], 100])
 
-    # thread_start([client1, devices[0], "raspberry", "Pieroangela0", conn, "customer/Azienda1/frigo",
-    #             "comunication/Azienda1/frigo", sub1], 2)
+
     th1.start()
     th2.start()
     th1.join()
