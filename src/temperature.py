@@ -51,14 +51,14 @@ if __name__ == '__main__':
     devices = [DHT22(board.D4, False), DHT22(board.D18, False)]
     client1, client2 = MQTTClient("sensor1"), MQTTClient("sensor2")
     sub1, sub2 = MQTTClient("sensor1sub"), MQTTClient("sensor2sub")
-    conn = "37c7a072139e48e380bb5e3df6662706.s1.eu.hivemq.cloud"
+    conn = "connection_string"
     start = time.time()
 
     th1 = threading.Thread(target=thread_start,
-                           args=[[client1, devices[0], "raspberry", "Pieroangela0", conn, "customer/Azienda1/frigo",
+                           args=[[client1, devices[0], "username1", "password1", conn, "customer/Azienda1/frigo",
                                   "comunication/Azienda1/frigo", sub1], 100])
     th2 = threading.Thread(target=thread_start,
-                           args=[[client2, devices[1], "raspberry2", "Raspberry2", conn, "customer/Azienda1/frigo1",
+                           args=[[client2, devices[1], "username2", "password2", conn, "customer/Azienda1/frigo1",
                                   "comunication/Azienda1/frigo1", sub2], 100])
 
 
